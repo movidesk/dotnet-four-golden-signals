@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Prometheus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,12 +48,14 @@ namespace FourGoldenSignals
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseHttpMetrics();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }
