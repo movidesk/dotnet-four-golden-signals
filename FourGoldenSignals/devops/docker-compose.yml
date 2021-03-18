@@ -6,7 +6,7 @@ services:
     ports:
       - "9090:9090"
     networks:
-      - movinetwork
+      - fgsnetwork
     command:
       - --config.file=/etc/prometheus/prometheus.yml
       - "--web.enable-lifecycle"
@@ -21,17 +21,20 @@ services:
     ports:
       - "9100:9100"
     networks:
-      - movinetwork
+      - fgsnetwork
 
   grafana:
     image: grafana/grafana:7.4.0
     restart: on-failure
     volumes:
       - grafana-storage:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources/
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards/
+      - ./grafana/dashboards/jsons:/var/lib/grafana/dashboards
     ports:
       - "3000:3000"
     networks:
-      - movinetwork
+      - fgsnetwork
 
   app:
     build: ../../
@@ -39,10 +42,10 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - movinetwork
+      - fgsnetwork
   
 networks:
-  movinetwork:
+  fgsnetwork:
 
 volumes:
   grafana-storage:
