@@ -3,7 +3,7 @@
 ## Executar o projeto
 
 ```
-cd FourGoldenSignals
+cd FourGoldenSignals/devops
 docker-compose up -d
 ```
 
@@ -26,7 +26,9 @@ bombardier -c 1 -d 5m http://localhost:5000/latency/witherror
 ### Aplicação de teste
 
 http://localhost:5000/metrics
+
 http://localhost:5000/latency
+
 http://localhost:5000/latency/witherror
 
 ### Grafana
