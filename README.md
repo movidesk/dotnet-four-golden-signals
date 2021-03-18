@@ -1,10 +1,24 @@
 # dotnet-four-golden-signals
 
-## executar o projeto
+## Executar o projeto
 
 ```
 cd FourGoldenSignals
 docker-compose up -d
+```
+
+## Gerar carga
+
+Pode ser utilizado um aplicativo de carga como o [bombardier](https://github.com/codesenberg/bombardier) para ter as métricas geradas no dashboard.
+
+Sugestão:
+```
+bombardier -c 1 -d 5m http://localhost:5000/latency
+```
+
+Caso queira com alguns erros 500:
+```
+bombardier -c 1 -d 5m http://localhost:5000/latency/witherror
 ```
 
 ## URLs
