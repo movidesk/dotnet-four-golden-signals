@@ -1,5 +1,14 @@
 # dotnet-four-golden-signals
 
+A intenção do projeto é mostrar de uma forma simples como fazer uma monitoria básica de um projeto seguindo a fillosofia dos [Four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/), proposto no [livro de SRE do Google](https://sre.google/sre-book/table-of-contents/).
+
+Os quatro sinais são:
+
+* Latência
+* Tráfego
+* Erros
+* Saturação
+
 ## Executar o projeto
 
 ```
