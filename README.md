@@ -12,7 +12,9 @@ docker-compose up -d
 ### Aplicação de teste
 
 http://localhost:5000/metrics
+
 http://localhost:5000/latency
+
 http://localhost:5000/latency/witherror
 
 ### Grafana
