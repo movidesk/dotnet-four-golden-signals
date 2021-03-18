@@ -1,0 +1,50 @@
+version: "3"
+services:
+  prometheus:
+    image: prom/prometheus:v2.20.1
+    restart: on-failure
+    ports:
+      - "9090:9090"
+    networks:
+      - movinetwork
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - "--web.enable-lifecycle"
+      - "--web.enable-admin-api"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-storage:/etc/prometheus
+  
+  node-exporter:
+    image: prom/node-exporter:latest
+    restart: on-failure
+    ports:
+      - "9100:9100"
+    networks:
+      - movinetwork
+
+  grafana:
+    image: grafana/grafana:7.4.0
+    restart: on-failure
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - movinetwork
+
+  app:
+    build: ../../
+    restart: on-failure
+    ports:
+      - "5000:80"
+    networks:
+      - movinetwork
+  
+networks:
+  movinetwork:
+
+volumes:
+  grafana-storage:
+  prometheus-storage:
+  influxdb-storage:

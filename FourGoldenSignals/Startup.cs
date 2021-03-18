@@ -40,7 +40,7 @@ namespace FourGoldenSignals
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FourGoldenSignals v1"));
             }
@@ -49,6 +49,7 @@ namespace FourGoldenSignals
 
             app.UseRouting();
             app.UseHttpMetrics();
+            app.UseDeveloperExceptionPage();
 
             app.UseAuthorization();
 
