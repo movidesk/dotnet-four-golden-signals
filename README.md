@@ -3,7 +3,7 @@
 ## executar o projeto
 
 ```
-cd FourGoldenSignals
+cd FourGoldenSignals/devops
 docker-compose up -d
 ```
 
